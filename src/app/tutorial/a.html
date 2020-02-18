@@ -1,55 +1,6 @@
-<div id="home">
-    	
-    <section id="page">
-
-        <section id="article">
-
-            <article id="create_new_project">
-                <h2>Creating New Project</h2>
-                
-                <div className="line"></div>
-                [ {"image" : "createnewprojectcase.png"}, {"image" : "MelonIDE.png"} ]
-                <div className="articleBody clear">
-                    <h4>When you open Melon Editor, a StartUp page with Window dialog will appear like this :</h4>
-                        <br/><h4><img id="createnewprojectcase.png" width="80%" height="auto" /><br/>
-                            &nbsp; &nbsp; &nbsp; &nbsp; Content 5.1 - Melon Editor Startup Dialog
-                        </h4><br/>
-                    <p>You can fill the pink highlight area with your game ID like Project Name, Viewport Settings, and color that you learn in the Melon Editor tutorial section.</p>
-                   
-                  <p>After all done, just click create and you will direct into Melon Editor Dashboard.</p>
-                    <br/><h4 align="center"><img id="MelonIDE.png" width="100%" height="auto"/><br/>
-                    </h4><br/>
-                </div>
-            </article>
-
-            <div className="line"></div>
-
-                <div className="Navigation">
-
-                    <Container>
-
-                        <Row>
-
-                            <Col xs={6}>
-
-                                <h3 align="left"><Link to="/tutorial/project-example">Previous</Link></h3>
-
-                            </Col>
-
-                            <Col xs={6}>
-
-                                <h3 align="right"><Link to="/tutorial/create-level">Next</Link></h3>
-
-                            </Col>
-
-                        </Row>
-
-                    </Container>
-
-                </div>
-        
-        </section>
-
-    </section>
-
+<div class="video">
+	<video controls (click)="toggleVideo()" #videoPlayer>
+		<source src="http://localhost:3000/video/highlight4.mp4" type="video/mp4" />
+		Browser not supported
+	</video>
 </div>
