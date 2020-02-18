@@ -1,6 +1,5 @@
 import { Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import { TutorialService } from './tutorial.service';
-import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Pipe({ name: 'safeHtml'})
@@ -51,8 +50,6 @@ export class SafeHtmlPipe implements PipeTransform  {
         </ul>
       </div>
     </nav>
-
-
     <main role="main" class="col-md-9 ml-sm-auto col-lg-9 pt-4 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
         <h1 class="h2">{{tutorialContent.title}}</h1>
@@ -69,20 +66,17 @@ export class TutorialComponent implements OnInit {
   documentation = [];
   projectSample = [];
   videoTutorial = [];
-
-  tutorial_id;
-
+  tutorial_id : string;
   tutorialContent : any = {title : ''};
 
   constructor(private tutorial: TutorialService, _DomSanitizationService: DomSanitizer) { }
+  
   ngOnInit() {
-   
-
+    // Get sidebar
     this.tutorial.getTutorialSidebar()
     .then((res : any) => {
       for (let i = 0; i < res.length; i++) {
         this.sidebar.push(res[i])
-
         if(res[i].section == 'Documentation')
           this.documentation.push(res[i])
         else if(res[i].section == 'Project Sample')
@@ -90,12 +84,14 @@ export class TutorialComponent implements OnInit {
         else if(res[i].section == 'Video Tutorial')
           this.videoTutorial.push(res[i])
       }
-      this.tutorial.currentTutorial.subscribe((id) =>{
-        this.tutorial_id = id;  
-        this.getCurrentTutorial(this.tutorial_id);
-      });
     })
     .catch((err) => console.log(err))
+
+    //get tutorial content
+    this.tutorial.currentTutorial.subscribe((id) =>{
+      this.tutorial_id = id;  
+      this.getCurrentTutorial(this.tutorial_id);
+    });
   }
 
   getCurrentTutorial(tutorial_id){
@@ -103,12 +99,19 @@ export class TutorialComponent implements OnInit {
     .then((content: any) => {
       this.tutorialContent = content[0];
 
+      // has images
       if(this.tutorialContent.image != null){
         var contentImages = JSON.parse(this.tutorialContent.image);  
         contentImages.forEach(element => {
           this.getTutorialImage(tutorial_id, element.image)
         });
       }
+
+      // has video
+      if(this.tutorialContent.video != null){
+        this.getTutorialVideo(tutorial_id);
+      }
+
     })
     .catch((err) =>{
       console.log(err);
@@ -142,7 +145,6 @@ export class TutorialComponent implements OnInit {
   goToTutorial(tutorial_id){
     this.tutorial.goToTutorial(tutorial_id)
     .then(() => {
-     
       this.getCurrentTutorial(this.tutorial_id);      
     })
   }
@@ -150,9 +152,25 @@ export class TutorialComponent implements OnInit {
   click(evt) {
     const href = evt.target.getAttribute('href');
     if (href) {
-      console.log(href);
-       evt.preventDefault();
+      evt.preventDefault();
       this.goToTutorial(href);
     }
- }
+  }
+
+  getTutorialVideo(tutorial_id){
+    this.tutorial.getTutorialVideo(tutorial_id)
+    .then((src) => {
+      var video =  document.getElementById('mt-video') as HTMLSourceElement;
+      console.log(video);
+      video.src = String(src);
+    })
+    .catch((err) =>{
+      console.log(err);
+    })
+  }
+
+  getVideoURL(){
+    return 'http://localhost:3000/video/mt_56/highlight4.mp4';
+  }
+
 }

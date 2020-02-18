@@ -42,6 +42,16 @@ export class TutorialService {
     })  
   }
 
-
-
+  public getTutorialVideo(tutorial_id : string){
+    return new Promise((resolve, reject) => {
+      this.http.get(`http://localhost:3000/tutorial/get-tutorial-video?tutorial_id=${tutorial_id}`)
+      .subscribe(
+        (video : string) => {
+          var host = 'http://localhost:3000/'
+          var source = host + video;
+          resolve(source)
+        }, 
+        (error) => reject(error))
+    })
+  }
 }
