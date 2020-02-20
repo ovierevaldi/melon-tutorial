@@ -3,13 +3,20 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-footer',
   template: `
-  <div class="footer-container fixed-bottom" [ngStyle]="{background: 'url(./assets/images/bg_footer.png)'}">
-    <div class="copyright">
-      Copyright @ 2020 Melon gaming all price are exclusive of tax. <b>Term of Service and EULA</b>
+  <div class="row" id="container">
+    <div class="col-4">
+      <a class="link" href="http://melonjs.org/">MelonJs.org</a>
+    </div>
+    <div class="col-4">
+      <span>Copyright 2018 - Melon Editor team</span>
+    </div>
+    <div class="col-4">
+      <a class="link" href="http://www.melongaming.com/">Melongaming.com</a>
     </div>
   </div>
   `,
-  styles: [`.footer-container {padding: 5px;}  .copyright{color: white; text-align: center}`]
+  styles: [`#container {background : #ff781f; text-align: center; padding: 25px;}
+            .link {color: white;}`]
 })
 export class FooterComponent implements OnInit {
 

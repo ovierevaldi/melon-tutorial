@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { TutorialComponent, SafeHtmlPipe } from './tutorial/tutorial.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularSplitModule } from 'angular-split';
 
 @NgModule({
   declarations: [
@@ -14,12 +15,14 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     TutorialComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularSplitModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

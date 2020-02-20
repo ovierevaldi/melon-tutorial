@@ -4,33 +4,33 @@ import { TutorialService } from '../tutorial/tutorial.service';
 @Component({
   selector: 'app-header',
   template: `
-  <div class="header-container">
-    <nav class="navbar navbar-expand">
-    <div class="col-2">
-      <img src="assets/images/logo-tutorial.png" alt="" style="height: 40px;">
-    </div>
-    <div class="col-10">
-      <div class="navbar-collapse collapse" id="navbarsExample04">
-        <div class="col-3 link">
-          <a>Melon Editor <span class="sr-only">(current)</span></a>
-        </div>    
-        <div class="col-3 link">
-          <a (click)="goToTutorial('mt_02')">Documentation <span class="sr-only">(current)</span></a>
-        </div> 
-        <div class="col-3 link">
-          <a (click)="goToTutorial('mt_42')">Project Sample <span class="sr-only">(current)</span></a>
-        </div> 
-        <div class="col-3 link">
-          <a (click)="goToTutorial('mt_56')">Video Tutorial <span class="sr-only">(current)</span></a>
-        </div>  
-      </div>    
+  <nav class="navbar navbar-expand-md sticky-top" id="container">
+    <div class="container-fluid">
+      <div class="col-lg-2 col-md justify-content-center-md">
+        <a class="navbar-brand" href="#"> <img src="assets/images/logo-tutorial.png" alt="" style="height: 25px;"></a>
       </div>
-    </nav>
-  </div>
+      <div class="col-lg-10">
+        <div class="row">
+          <div class="col-lg-3 col-md mb-2 mt-2">
+            <a (click)="goToTutorial('mt_01')">Melon Editor</a>
+          </div>
+          <div class="col-lg-3 col-md mb-2  mt-2">
+            <a (click)="goToTutorial('mt_02')">Documentation</a>
+          </div>
+          <div class="col-lg-3 col-md mb-2  mt-2">
+            <a (click)="goToTutorial('mt_42')">Project Sample</a>
+          </div>
+          <div class="col-lg-3 col-md mb-2  mt-2">
+          <a (click)="goToTutorial('mt_56')">Video Tutorial</a>
+          </div>
+       </div>
+      </div>
+    </div>
+  </nav>
   `,
   styles: [`
-    .header-container{ background: #73c046; }
-    .link{ text-align: center; color: white;}
+     #container{ background: #73c046; }
+    .link{ text-align: center; color: #3C3C3C;}
   `]
 })
 export class HeaderComponent implements OnInit {
