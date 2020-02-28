@@ -14,9 +14,9 @@ export class SafeHtmlPipe implements PipeTransform  {
 @Component({
   selector: 'app-tutorial',
   template: `
-  <div class="container-fluid">
-    <div class="row flex-xl-nowrap">
-      <div class="col-12 col-md-3 col-xl-2 bd-sidebar" style="max-height: 720px; overflow-x: hidden; overflow-x: auto;">
+  <div class="container-fluid" style="height: calc(100vh - 80px);">
+    <div class="row" style="height: 100%;">
+      <div class="col-12 col-md-3 col-xl-auto bd-sidebar" style="height: 100%; overflow-x: auto;">
         <h4 class="mt-2 section">Contents Index:</h4>
         <h6 class="mt-3">
           <a [ngClass]="tutorial_id == 'mt_01' ? 'selected': 'notSelected'" (click)="goToTutorial('mt_01')"><span>Melon Highlights</span></a>
@@ -47,13 +47,13 @@ export class SafeHtmlPipe implements PipeTransform  {
         </ul>
       </div>
 
-      <main class="col-12 col-md-9 col-xl-10 " role="main">
+      <div class="col-12 col-md-9 col-xl" role="main" style="height: 100%; overflow-y: auto; background: #fcfcfc;">
         <div class="col border-bottom pt-2 mb-4" style="text-align: center">
           <h1 style="pb-1">{{tutorialContent.title}}</h1>
         </div>
         <div class="col-auto" #div (click)="click($event)" [innerHTML]="tutorialContent.description | safeHtml">
         </div>
-      </main>
+      </div>
     </div>
   </div>
   `,

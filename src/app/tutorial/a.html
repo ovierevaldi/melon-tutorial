@@ -1,49 +1,125 @@
-<div class="container-fluid">
-	<div class="row flex-xl-nowrap">
-		<div class="col-12 col-md-3 col-xl-2 bd-sidebar" style="max-height: 720px; overflow-x: hidden; overflow-x: auto;">
-			<h4 class="mt-2 pl-2 section">Contents Index:</h4>
-			<h6 class="mt-2 section">
-			  <a [ngClass]="tutorial_id == 'mt_01' ? 'selected': 'notSelected'" (click)="goToTutorial('mt_01')"><span>Melon Highlights</span></a>
-			</h6>
-			<h6 class="mt-2 section">
-			  <span>Documentation</span>
-			</h6>
-			
-			  <div *ngFor="let doc of documentation">
-				<h6><a [ngClass]="tutorial_id == doc.tutorial_id ? 'selected': 'notSelected'"  (click)="goToTutorial(doc.tutorial_id)">{{doc.sidebar_title}} </a></h6>
-			  </div>
-			
-			<h6 class="mt-3 section">
-			  <span>Project Sample</span>
-			</h6>
-			<ul style="padding-left: 0px;">
-			  <li *ngFor="let sample of projectSample" style="list-style-type: none;">
-				<h6><a [ngClass]="tutorial_id == sample.tutorial_id ? 'selected': 'notSelected'" (click)="goToTutorial(sample.tutorial_id)">{{sample.sidebar_title}}</a></h6>
-			  </li>
-			</ul>
-			<h6 class="mt-3 section">
-			  <span>Video Tutorial</span>
-			</h6>
-			<ul style="padding-left: 0px;">
-			  <li *ngFor="let video of videoTutorial" style="list-style-type: none;">
-				<h6><a [ngClass]="tutorial_id == video.tutorial_id ? 'selected': 'notSelected'" (click)="goToTutorial(video.tutorial_id)">{{video.sidebar_title}} </a></h6>
-			  </li>
-			</ul>
-		</div>
+<style>
+	li{
+		list-style-type: none;
+	}
+	.caption{
+		font-weight:bold;
+	}
+</style>
 
-		<div class="d-none d-xl-block col-xl-2 bd-toc">
-		</div>
-
-		<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-			<div class="row justify-content-center">    
-				<div class="col border-bottom pt-2 mb-4" style="text-align: center">
-				  <h1 style="pb-1">{{tutorialContent.title}}</h1>
+<div>
+	<p>In Melon Editor, the Game World is identified as "level". Level contains any game object like tile map, layer area, camera stage, sprite, and leaderboard that available to the player during the development mode.</p>
+	<p>A Game <b>Level</b> generally used to make a scenario of your game, increase / decrease the difficulty to appeal to players with different skill levels with any kind of quest. Each level presents new content and challenges to keep player's interest.</p>
+	<img id="levelEditor.png" width="100%" height="auto"/>
+	<h4 align="center">MelonIDE Level Editor</h4>
+	<p>Melon Editor Level is divided into 3 parts, there are :</p>
+	<ul>
+		<li style="list-style-type: circle;">Level Properties</li>
+		<li style="list-style-type: circle;">Level Layer</li>
+		<li style="list-style-type: circle;">Level Stage</li><br/>
+	</ul>
+	
+	<ul style="padding-left: 0px;">
+		<h4>Level Properties</h4>
+		<li style="padding-left: 20px;">
+			<div class="row mb-4">
+				<div class="col-auto">
+					<img id="levelProperties.png" width="auto" height="auto"/>
+				</div>
+				<div class="col">
+					<p>Is the level component that use to manage the orientation of the Game, how the camera view showed on your game(Orthogonal / Isometric), set the column & Row that will appear on the tiles, set the size (width&Height) of your tiles, settings the game background and to show/hide the grid.</p>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-auto" #div (click)="click($event)" [innerHTML]="tutorialContent.description | safeHtml">
+		</li>
+		<h4>Level Layer</h4>
+		<li style="padding-left: 20px;">
+			<div class="row mb-4">
+				<div class="col-auto">
+					<img id="levelLayer.png" width="auto" height="auto"/>
+				</div>	
+				<div class="col">
+					<p>is the level component to add / remove a game object like sprite, tiles, etc. This component shows the list of all game objects in that level and sets up the Viewport and Collision.</p>
 				</div>
 			</div>
-		</main>
-	</div>
+		</li>
+		<h4>Level Stage</h4> 
+		<li  style="padding-left: 20px;">
+			<div class="col">
+				<div class="row">
+					<div class="col-9">
+						<img id="levelStage.png" width="100%" style="padding-bottom: 20px;"/>
+					</div>
+					<div class="col">
+						<p>is the area that shows and simulate the design of your level.</p>
+					</div>
+				</div>
+				<p><b>Creating A Level</b></p>
+				<div class="row">
+					<div class="col">
+						<p>To create a new level you can click on "Create" > "Level" at the menubar. After this window appears then fill it with the name of your level. After done press Create!</p>
+					</div>
+					<div class="col-6">
+						<img id="levelWindow.png" width="100%"/>
+					</div>
+				</div>
+
+				<p><b>Adding an object Into Level</b></p>
+				<div class="row mb-4">
+					<div class="col">
+						<p>To import new object into level editor, you can go to Layer Level then click on the "+" button then choose one of any type object that you want. Melon Editor supports 5 types of Game Objects (Tile layer,Object Layer(Sprite), Images Layer, Text & Bitmap Text). All objects that have imported into level editor be you removed by clicking the "-" button,copy & duplicate it or rename by clicking the "rename" button.</p>
+						<div class="col-9">
+							<img id="add-remove-rename.png" width="100%"/>
+						</div>
+					</div>
+				</div>
+
+				<p><b>Viewport</b></p>
+				<div class="row mb-4">
+					<div class="col-4">
+						<img id="viewport.png" width="100%" height="auto" />
+					</div>
+					<div class="col">
+						<div>Viewport is the component use to set up the point of view of your game canvas / screen.</div>
+						<div>To set up this point you just fill the x,y coordinat as an anchor point on the window dialog below:</div>
+					</div>
+				</div>		
+
+				<p><b>Collision</b></p>
+				<div class="row mb-4">
+					<div class="col">
+						<p>When you are developing a game, sometimes you have to make some of your sprite collide when touched with other object or the edge of screen. Then you need a collider to give in each of the object. You can make it by using the Collider feature. You only need to drag one of this collider shapes below to your object that you wanna have a collider effect. But take care! To make a better collider effect you must give the correct collider shape, and here is the explanation :</p>
+						<div class="col-6">
+							<img id="collision.png" width="100%"/>	
+						</div>
+					</div>
+				</div>
+				
+				<p><b>Object Manager</b></p>
+				<div class="row mb-4">
+					<div class="col">
+						<div class="col-auto">
+							<img id="objectManager.png" width="auto" height="auto"/>
+						</div>
+						<div class="col">
+							<p>You can configure the behavior, replacement and sizes of all your objects in the Object Manager Section area below.</p>
+							<p>You can change the layer position by switching the structure on the red highlighted area and you can set-up the object coordinate, sizes and their behavior in the yellow highlighted area.</p>
+						</div>
+					</div>
+				</div>
+
+				<p><b>Object Behavior</b></p>
+				<div class="row mb-4">
+					<div class="col">
+						<p>To add any behavior for your object, you can do it at the Section area below:</p>
+						<div class="col-6">
+							<img id="behaviourObject.png" width="80%" height="auto"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
 </div>
+
+
+
