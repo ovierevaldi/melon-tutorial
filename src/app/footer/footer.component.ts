@@ -15,7 +15,7 @@ import { Component, OnInit } from '@angular/core';
     </div>
   </div>
   `,
-  styles: [`#container {background : #ff781f; text-align: center; padding: 25px;}
+  styles: [`#container {background : #ff781f; text-align: center; padding: 12px;}
             .link {color: white;}`]
 })
 export class FooterComponent implements OnInit {

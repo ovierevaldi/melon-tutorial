@@ -14,42 +14,42 @@ export class SafeHtmlPipe implements PipeTransform  {
 @Component({
   selector: 'app-tutorial',
   template: `
-  <div class="container-fluid" style="height: calc(100vh - 80px);">
+  <div class="container-fluid" style="height: calc(100vh - 17.5vh);">
     <div class="row" style="height: 100%;">
       <div class="col-12 col-md-3 col-xl-auto bd-sidebar" style="height: 100%; overflow-x: auto;">
         <h4 class="mt-2 section">Contents Index:</h4>
         <h6 class="mt-3">
           <a [ngClass]="tutorial_id == 'mt_01' ? 'selected': 'notSelected'" (click)="goToTutorial('mt_01')"><span>Melon Highlights</span></a>
         </h6>
-        <h6 class="mt-2 section">
-          <span>Documentation</span>
-        </h6>
-        
-          <div *ngFor="let doc of documentation">
-          <h6><a [ngClass]="tutorial_id == doc.tutorial_id ? 'selected': 'notSelected'"  (click)="goToTutorial(doc.tutorial_id)">{{doc.sidebar_title}} </a></h6>
+       
+          <span class="section">Documentation</span>
+       
+        <ul style="padding-left: 0px;">
+          <div *ngFor="let doc of documentation" class="ml-2">
+          <a [ngClass]="tutorial_id == doc.tutorial_id ? 'selected': 'notSelected'"  (click)="goToTutorial(doc.tutorial_id)">{{doc.sidebar_title}} </a>
           </div>
-        
-        <h6 class="mt-3 section">
-          <span>Project Sample</span>
-        </h6>
-        <ul style="padding-left: 0px;">
-          <li *ngFor="let sample of projectSample" style="list-style-type: none;">
-          <h6><a [ngClass]="tutorial_id == sample.tutorial_id ? 'selected': 'notSelected'" (click)="goToTutorial(sample.tutorial_id)">{{sample.sidebar_title}}</a></h6>
-          </li>
         </ul>
-        <h6 class="mt-3 section">
-          <span>Video Tutorial</span>
-        </h6>
+      
+          <span class="section">Project Sample</span>
+       
         <ul style="padding-left: 0px;">
-          <li *ngFor="let video of videoTutorial" style="list-style-type: none;">
-          <h6><a [ngClass]="tutorial_id == video.tutorial_id ? 'selected': 'notSelected'" (click)="goToTutorial(video.tutorial_id)">{{video.sidebar_title}} </a></h6>
-          </li>
+          <div *ngFor="let sample of projectSample" class="ml-2">
+            <a [ngClass]="tutorial_id == sample.tutorial_id ? 'selected': 'notSelected'" (click)="goToTutorial(sample.tutorial_id)">{{sample.sidebar_title}}</a>
+          </div>
+        </ul>
+      
+          <span  class="section">Video Tutorial</span>
+        
+        <ul style="padding-left: 0px;">
+          <div *ngFor="let video of videoTutorial" class="ml-2">
+          <a [ngClass]="tutorial_id == video.tutorial_id ? 'selected': 'notSelected'" (click)="goToTutorial(video.tutorial_id)">{{video.sidebar_title}} </a>
+          </div>
         </ul>
       </div>
 
       <div class="col-12 col-md-9 col-xl" role="main" style="height: 100%; overflow-y: auto; background: #fcfcfc;">
         <div class="col border-bottom pt-2 mb-4" style="text-align: center">
-          <h1 style="pb-1">{{tutorialContent.title}}</h1>
+          <h1>{{tutorialContent.title}}</h1>
         </div>
         <div class="col-auto" #div (click)="click($event)" [innerHTML]="tutorialContent.description | safeHtml">
         </div>
@@ -57,7 +57,7 @@ export class SafeHtmlPipe implements PipeTransform  {
     </div>
   </div>
   `,
-  styles: [`.notSelected {color: #3C3C3C;} .selected {color: blue;} .section{color: red;}`]
+  styles: [`.notSelected {color: #3C3C3C;} .selected {color: blue;} .section{color: red; font-weight: bold;}`]
 })
 export class TutorialComponent implements OnInit {
   sidebar = [];
