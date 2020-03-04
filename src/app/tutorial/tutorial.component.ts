@@ -14,52 +14,61 @@ export class SafeHtmlPipe implements PipeTransform  {
 @Component({
   selector: 'app-tutorial',
   template: `
-  <div class="container-fluid" style="height: calc(100vh - 17.5vh);">
+  <div class="container-fluid" style="height: calc(100vh - 9vh);">
     <div class="row" style="height: 100%;">
-      <div class="col-12 col-md-3 col-xl-auto bd-sidebar" style="height: 100%; overflow-x: auto;">
+      <div class="col-12 col-md-3 col-xl-auto bd-sidebar" [ngClass]=" mobileSize === false ? 'bigMode': 'smallMode'">
         <h4 class="mt-2 section">Contents Index:</h4>
-        <h6 class="mt-3">
-          <a [ngClass]="tutorial_id == 'mt_01' ? 'selected': 'notSelected'" (click)="goToTutorial('mt_01')"><span>Melon Highlights</span></a>
-        </h6>
-       
+
           <span class="section">Documentation</span>
-       
-        <ul style="padding-left: 0px;">
           <div *ngFor="let doc of documentation" class="ml-2">
-          <a [ngClass]="tutorial_id == doc.tutorial_id ? 'selected': 'notSelected'"  (click)="goToTutorial(doc.tutorial_id)">{{doc.sidebar_title}} </a>
+            <button style="border: none; background: white; text-align: left" [ngClass]="tutorial_id == doc.tutorial_id ? 'selected': 'notSelected'" (click)="goToTutorial(doc.tutorial_id)">{{doc.sidebar_title}} </button>
           </div>
-        </ul>
       
           <span class="section">Project Sample</span>
-       
-        <ul style="padding-left: 0px;">
           <div *ngFor="let sample of projectSample" class="ml-2">
-            <a [ngClass]="tutorial_id == sample.tutorial_id ? 'selected': 'notSelected'" (click)="goToTutorial(sample.tutorial_id)">{{sample.sidebar_title}}</a>
+            <button style="border: none; background: white; text-align: left" [ngClass]="tutorial_id == sample.tutorial_id ? 'selected': 'notSelected'" (click)="goToTutorial(sample.tutorial_id)">{{sample.sidebar_title}}</button>
           </div>
-        </ul>
       
           <span  class="section">Video Tutorial</span>
-        
-        <ul style="padding-left: 0px;">
           <div *ngFor="let video of videoTutorial" class="ml-2">
-          <a [ngClass]="tutorial_id == video.tutorial_id ? 'selected': 'notSelected'" (click)="goToTutorial(video.tutorial_id)">{{video.sidebar_title}} </a>
+          <button style="border: none; background: white; text-align: left" [ngClass]="tutorial_id == video.tutorial_id ? 'selected': 'notSelected'" (click)="goToTutorial(video.tutorial_id)">{{video.sidebar_title}} </button>
           </div>
-        </ul>
       </div>
 
       <div class="col-12 col-md-9 col-xl" role="main" style="height: 100%; overflow-y: auto; background: #fcfcfc;">
         <div class="col border-bottom pt-2 mb-4" style="text-align: center">
           <h1>{{tutorialContent.title}}</h1>
         </div>
-        <div class="col-auto" #div (click)="click($event)" [innerHTML]="tutorialContent.description | safeHtml">
+        <div style="min-height: 71vh" class="col-auto" #div (click)="click($event)" [innerHTML]="tutorialContent.description | safeHtml">
         </div>
+        <app-footer></app-footer>
       </div>
+
     </div>
   </div>
   `,
-  styles: [`.notSelected {color: #3C3C3C;} .selected {color: blue;} .section{color: red; font-weight: bold;}`]
+  styles: [`.notSelected {color: #3C3C3C;} .selected {color: #73c046;} .section{color: #ff781f; font-weight: bold;} 
+  button:focus {
+    outline: white 0px auto;
+  }
+  button:hover {
+    color: #73c046
+  }
+
+  .smallMode{
+    height: 20%;
+    overflow-x: auto;
+  }
+  .bigMode{
+    height: 100%;
+    overflow-x: auto;
+  }
+
+  `]
 })
 export class TutorialComponent implements OnInit {
+  mobileSize = false;
+
   sidebar = [];
   documentation = [];
   projectSample = [];
@@ -70,6 +79,7 @@ export class TutorialComponent implements OnInit {
   constructor(private tutorial: TutorialService, _DomSanitizationService: DomSanitizer) { }
   
   ngOnInit() {
+    this.getScreenWidth();
     // Get sidebar
     this.tutorial.getTutorialSidebar()
     .then((res : any) => {
@@ -171,4 +181,13 @@ export class TutorialComponent implements OnInit {
     return 'http://localhost:3000/video/mt_56/highlight4.mp4';
   }
 
+  getScreenWidth(){
+   var width = window.innerWidth
+    if (width <= 766){
+      this.mobileSize = true;
+    }
+    else{
+      this.mobileSize = false;
+    }
+  }
 }
