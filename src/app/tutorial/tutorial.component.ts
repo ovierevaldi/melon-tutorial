@@ -18,20 +18,24 @@ export class SafeHtmlPipe implements PipeTransform  {
     <div class="row" style="height: 100%;">
       <div class="col-12 col-md-3 col-xl-auto bd-sidebar" [ngClass]=" mobileSize === false ? 'bigMode': 'smallMode'">
         <h4 class="mt-2 section">Contents Index:</h4>
-
+    
           <span class="section">Documentation</span>
-          <div *ngFor="let doc of documentation" class="ml-2">
+          <div *ngFor="let doc of documentation" class="ml-1">
             <button style="border: none; background: white; text-align: left" [ngClass]="tutorial_id == doc.tutorial_id ? 'selected': 'notSelected'" (click)="goToTutorial(doc.tutorial_id)">{{doc.sidebar_title}} </button>
           </div>
-      
-          <span class="section">Project Sample</span>
-          <div *ngFor="let sample of projectSample" class="ml-2">
-            <button style="border: none; background: white; text-align: left" [ngClass]="tutorial_id == sample.tutorial_id ? 'selected': 'notSelected'" (click)="goToTutorial(sample.tutorial_id)">{{sample.sidebar_title}}</button>
+
+          <div style="margin-top: 10px;">
+            <span class="section">Project Sample</span>
+            <div *ngFor="let sample of projectSample" class="ml-1">
+              <button style="border: none; background: white; text-align: left" [ngClass]="tutorial_id == sample.tutorial_id ? 'selected': 'notSelected'" (click)="goToTutorial(sample.tutorial_id)">{{sample.sidebar_title}}</button>
+            </div>
           </div>
-      
-          <span  class="section">Video Tutorial</span>
-          <div *ngFor="let video of videoTutorial" class="ml-2">
-          <button style="border: none; background: white; text-align: left" [ngClass]="tutorial_id == video.tutorial_id ? 'selected': 'notSelected'" (click)="goToTutorial(video.tutorial_id)">{{video.sidebar_title}} </button>
+
+          <div style="margin-top: 10px;">
+            <span class="section">Video Tutorial</span>
+            <div *ngFor="let video of videoTutorial" class="ml-1">
+              <button style="border: none; background: white; text-align: left" [ngClass]="tutorial_id == video.tutorial_id ? 'selected': 'notSelected'" (click)="goToTutorial(video.tutorial_id)">{{video.sidebar_title}} </button>
+            </div>
           </div>
       </div>
 
