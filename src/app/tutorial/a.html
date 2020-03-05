@@ -1,7 +1,174 @@
-<div class="row mb-4 justify-content-center">
-	<div style="width: 480; height: 360px;">
-		<video controls id="mt-video" width="90%">
-			<source type="video/mp4">
-		</video>
+<style>
+	col{
+		text-align: justify;
+	}
+</style>
+
+<div class="row mb-4">
+	<div class="col-12 mb-2">
+		In the concept of blockly programming, the smallest code component is called <i>"Block".</i> When the block component has a code, we call it <i>"Block Code".</i>
+	</div>
+	<div class="col-auto">
+		<img id="conblock.png"/>
+	</div>
+	<div class="col-12">
+		<b>There are 3 types of blockcode: </b>
+		<ol type="1">
+			<li>The first is a parcode block that can integrate several blockcodes</li>
+			<li>Second type, blockcode with taq input is used as data / process input from blockcode that blocks the process of generating data.</li>
+			<li>Third type, blockcode with an external arrow tag is used as a data / process input from blockcode after the process will be generated.</li>
+		</ol>
+	</div>
+	<div class="col-12">
+		<p>We will try to give the blockly script and show it in the console</p>
+	</div>
+	<div class="col-auto">
+		<img id="consoleBlockly.png" width="100%"/>
+	</div>
+	<div class="col-12">
+		<p>To show the "Hello World" text, firstly you have to drag the text block from text palette, fill the string with "Hello World" to the output block then integrate it to the comment block that can be found in console print.</p>
+	</div>
+	<div class="col-auto">
+		<img id="helloworldComment.png" width="100%"/>
+	</div>
+	<div class="col-auto">
+		<img id="hellocode.png" width="100%"/>
+	</div>
+
+	<div class="col-12 mt-4">
+		<h3>Print The Text data in Console :</h3>
+		<p>Try to add this block below to your first block structure! Then run & open inspect mode on web so you will see the text "Hello World" printed in the console.</p>
+	</div>
+	<div class="col-auto">
+		<img id="helloworld.png"/>
+	</div>
+
+	<div class="col-12 mt-4">
+		<h3>Arithmatic operations in Console :</h3>
+		<p>Re-try to add this block above to your first block structure! Then run & open inspect mode on web so you will see the number printed in the console.</p>
+	</div>
+	<div class="col-auto">
+		<img id="aritmatik.png"/>
+	</div>
+	<div class="col-auto">
+		<b>Results: </b> <br><br>
+		<img id="aritmatikresult.png"/>
+	</div>
+
+	<div class="col-12">
+		<h4>Explanation :</h4>
+		<div class="col-12">
+			<style>
+				col{
+					text-align: justify;
+				}
+			</style>
+			
+			<div class="row mb-4">
+				<div class="col-12 mb-2">
+					In the concept of blockly programming, the smallest code component is called <i>"Block".</i> When the block component has a code, we call it <i>"Block Code".</i>
+				</div>
+				<div class="col-auto">
+					<img id="conblock.png"/>
+				</div>
+				<div class="col-12">
+					<b>There are 3 types of blockcode: </b>
+					<ol type="1">
+						<li>The first is a parcode block that can integrate several blockcodes</li>
+						<li>Second type, blockcode with taq input is used as data / process input from blockcode that blocks the process of generating data.</li>
+						<li>Third type, blockcode with an external arrow tag is used as a data / process input from blockcode after the process will be generated.</li>
+					</ol>
+				</div>
+				<div class="col-12">
+					<p>We will try to give the blockly script and show it in the console</p>
+				</div>
+				<div class="col-auto">
+					<img id="consoleBlockly.png" width="100%"/>
+				</div>
+				<div class="col-12">
+					<p>To show the "Hello World" text, firstly you have to drag the text block from text palette, fill the string with "Hello World" to the output block then integrate it to the comment block that can be found in console print.</p>
+				</div>
+				<div class="col-auto">
+					<img id="helloworldComment.png" width="100%"/>
+				</div>
+				<div class="col-auto">
+					<img id="hellocode.png" width="100%"/>
+				</div>
+			
+				<div class="col-12 mt-4">
+					<h3>Print The Text data in Console :</h3>
+					<p>Try to add this block below to your first block structure! Then run & open inspect mode on web so you will see the text "Hello World" printed in the console.</p>
+				</div>
+				<div class="col-auto">
+					<img id="helloworld.png"/>
+				</div>
+			
+				<div class="col-12 mt-4">
+					<h3>Arithmatic operations in Console :</h3>
+					<p>Re-try to add this block above to your first block structure! Then run & open inspect mode on web so you will see the number printed in the console.</p>
+				</div>
+				<div class="col-auto">
+					<img id="aritmatik.png"/>
+				</div>
+				<div class="col-auto">
+					<b>Results: </b> <br><br>
+					<img id="aritmatikresult.png"/>
+				</div>
+			
+				<div class="col-12 mt-4">
+					<h4>Explanation :</h4>
+					<p><b>On Reset Event</b></p>
+					<p>JS script : onResetEventFunction(){}</p>
+					<p>Block Effect : give an event when the game is firstly start / restart.</p>
+					<br/><br/>
+			
+					<p><b>Comment : Hello World</b></p>
+					<p>JS script : `/* Hello World */` (without `)</p>
+					<p>Block Effect : give a description of the usage of some code / notice and make it not being process by system.</p>
+					<br/><br/>
+			
+					<p><b>Print To Console : "Hello World"</b></p>
+					<p>JS script : Console.log("Hello World")</p>
+					<p>Block Effect : print to the console system a messages string "Hello World".</p>
+					<br/><br/>
+			
+					<p><b>game.data.score = 0</b></p>
+					<p>this.var.score = game.data.score;</p>
+					<p>Print To Console : game.data.score</p>
+					<p>JS script :</p>
+					<p>game.data.score</p>
+					<p>this.var.score = game.data.score;</p>
+					<p>Block Effect : System getting the gamescore data and print it into console..</p>
+					<br/><br/>
+			
+					<p><b>game.data.score = this.var.score set game.data.score</b></p>
+					<p>JS script : this.var.score.get</p>
+					<p>Block Effect : .</p>
+					<br/>sets the variable score with game.data. at game scene<br/>
+			
+					<p><b>Repeatision :</b></p>
+					<p>repeat while gamedata.score less equals '50'</p>
+					<p>do : gamedata.score = gamedata.score+10</p>
+					<p>Print To console : Game.data.score</p>
+					<p>JS script :</p>
+					<p>   game.data.score = game.data.score + 10</p>
+					<p>   console.log(game.data.score);          </p>
+			
+					<p>Block Effect : long as the gamedata score is less equals than 50 then adding the gamedata score by 10 and print the result into console.</p>
+					<br/><br/>
+			
+					<p><b>Conditional Block - Single If Then :</b></p>
+					<p>check! if the gamedata.score more or equals than '50'</p>
+					<p>do : gamedata.score = 0</p>
+					<p>Print To console : Game.data.score</p>
+					<p>JS script :</p>
+					<p>game.data.score = 0;</p>
+					<p>console.log(game.data.score);</p>
+			
+					<p>Block Effect : if the gamedata score value is more or equas than '50' then reset gamedata score to 0 and print it into console.</p>
+					<br/><br/>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
